@@ -5,16 +5,32 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const
 
+/*
+ * Images and videos are served from the GitHub repo through the jsDelivr CDN
+ * rather than from this app's /public. On Vercel the URLs are pinned to the
+ * deployed commit, so they always match the code and jsDelivr caches them
+ * permanently; elsewhere they follow `main`. Set NEXT_PUBLIC_ASSET_BASE to
+ * override the base, e.g. "" to use the local /public while developing.
+ */
+const ASSET_BASE =
+  process.env.NEXT_PUBLIC_ASSET_BASE ??
+  `https://cdn.jsdelivr.net/gh/Faizy-broski/StoneMix@${
+    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "main"
+  }/public`
+
+export const asset = (path: `/${string}`) => `${ASSET_BASE}${path}`
+
 export const ASSETS = {
-  logo: "/images/logo.svg",
-  hero: "/images/hero-bg.svg",
-  heroVideo: "/vid/hero-bg.mp4",
-  material: "/images/material.svg",
-  materialVideo: "/vid/material.mp4",
-  servicesBackdrop: "/images/services-bg.svg",
-  truck: "/images/truck.svg",  materialBackdrop: "/images/material-bg.svg",
-  statsVideo: "/vid/stats.mp4",
-  chooseVideo: "/vid/choose.mp4",
+  logo: asset("/images/logo.svg"),
+  hero: asset("/images/hero-bg.svg"),
+  heroVideo: asset("/vid/hero-bg.mp4"),
+  material: asset("/images/material.svg"),
+  materialVideo: asset("/vid/material.mp4"),
+  materialBackdrop: asset("/images/material-bg.svg"),
+  servicesBackdrop: asset("/images/services-bg.svg"),
+  truck: asset("/images/truck.svg"),
+  statsVideo: asset("/vid/stats.mp4"),
+  chooseVideo: asset("/vid/choose.mp4"),
 } as const
 
 // `body` is split where the desktop design breaks the line.
@@ -36,8 +52,8 @@ export const REASONS = [
 ] as const
 
 export const OUTCOMES = [
-  { name: "Coastal House", tags: "Ready mix / Pumping", image: "/images/outcome1.svg", width: 1268, height: 828 },
-  { name: "Civic Structure", tags: "Supply / Delivery", image: "/images/outcome2.svg", width: 807, height: 810 },
+  { name: "Coastal House", tags: "Ready mix / Pumping", image: asset("/images/outcome1.svg"), width: 1268, height: 828 },
+  { name: "Civic Structure", tags: "Supply / Delivery", image: asset("/images/outcome2.svg"), width: 807, height: 810 },
 ] as const
 
 export const STATS = [
@@ -48,10 +64,10 @@ export const STATS = [
 ] as const
 
 export const SERVICES = [
-  { title: "Ready Mix Concrete", tags: ["Consistent", "Controlled", "Ready"], image: "/images/s1.svg" },
-  { title: "Mix on Site", tags: ["Adaptable", "Precise", "Fresh"], image: "/images/s2.svg" },
-  { title: "Concrete Pumping", tags: ["Reach", "Flow", "Accuracy"], image: "/images/s3.svg" },
-  { title: "Supply & Delivery", tags: ["Timed", "Tracked", "Reliable"], image: "/images/s4.svg" },
+  { title: "Ready Mix Concrete", tags: ["Consistent", "Controlled", "Ready"], image: asset("/images/s1.svg") },
+  { title: "Mix on Site", tags: ["Adaptable", "Precise", "Fresh"], image: asset("/images/s2.svg") },
+  { title: "Concrete Pumping", tags: ["Reach", "Flow", "Accuracy"], image: asset("/images/s3.svg") },
+  { title: "Supply & Delivery", tags: ["Timed", "Tracked", "Reliable"], image: asset("/images/s4.svg") },
 ] as const
 
 /*
