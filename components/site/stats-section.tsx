@@ -1,3 +1,4 @@
+import { Reveal, RevealLines } from "@/components/motion/reveal"
 import { ASSETS, STATS } from "@/lib/site"
 
 /*
@@ -12,7 +13,7 @@ export function StatsSection() {
       aria-labelledby="stats-title"
       className="w-full bg-white px-4 py-10 sm:px-8 lg:mx-auto lg:h-742 lg:max-w-1440 lg:px-100 lg:py-95 lg:[--spacing:var(--u)]"
     >
-      <div className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-graphite px-5 py-14 text-white lg:block lg:h-552 lg:rounded-[calc(var(--u)*30)] lg:p-0 lg:*:absolute">
+      <Reveal from="up" zoom duration={1.1} className="relative isolate flex flex-col overflow-hidden rounded-2xl bg-graphite px-5 py-14 text-white lg:block lg:h-552 lg:rounded-[calc(var(--u)*30)] lg:p-0 lg:*:absolute">
         <video
           aria-hidden
           autoPlay
@@ -26,7 +27,7 @@ export function StatsSection() {
         </video>
         <div aria-hidden className="absolute inset-0 -z-10 bg-black/45" />
 
-        <h2
+        <RevealLines
           id="stats-title"
           className="text-center text-[9vw] leading-[0.92] font-semibold tracking-[0.006em] uppercase lg:inset-x-0 lg:top-71.75 lg:translate-x-0.5 lg:text-[length:calc(var(--u)*100)]"
         >
@@ -34,21 +35,21 @@ export function StatsSection() {
           <span className="block lg:-translate-x-13">From one pour</span>
           <span className="block">to the whole</span>
           <span className="block">structure.</span>
-        </h2>
+        </RevealLines>
 
         <ul className="mt-12 grid grid-cols-2 gap-y-8 border-t border-white/45 pt-8 lg:top-415.5 lg:left-108.5 lg:mt-0 lg:flex lg:w-1040 lg:justify-between lg:pt-19.5 lg:pr-36 lg:pl-29">
-          {STATS.map((stat) => (
-            <li key={stat.label} className="flex flex-col items-center">
+          {STATS.map((stat, i) => (
+            <Reveal as="li" key={stat.label} from={i % 2 ? "right" : "left"} delay={i * 0.12} className="flex flex-col items-center">
               <span className="text-5xl leading-none font-bold tracking-[0.03em] tabular-nums lg:text-[length:calc(var(--u)*47)]">
                 {stat.value}
               </span>
               <span className="mt-3 text-xs leading-none uppercase lg:mt-18.5 lg:text-[length:max(10px,calc(var(--u)*12))]">
                 {stat.label}
               </span>
-            </li>
+            </Reveal>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </section>
   )
 }

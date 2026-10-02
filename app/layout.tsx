@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import { MotionProvider } from "@/components/motion/reveal";
 import "./globals.css";
 
 // Static weights (not the variable font): the variable build has overlapping
@@ -22,12 +23,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // Browser extensions stamp their own attributes on <html>/<body> before
+  // React hydrates; ignore those mismatches (this only covers these two tags).
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

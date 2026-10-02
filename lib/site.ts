@@ -31,6 +31,9 @@ export const ASSETS = {
   truck: asset("/images/truck.svg"),
   statsVideo: asset("/vid/stats.mp4"),
   chooseVideo: asset("/vid/choose.mp4"),
+  // Served from this app's /public until they are pushed for the CDN.
+  faqBackdrop: "/images/faq.svg",
+  footerBackdrop: "/images/footer-bg.svg",
 } as const
 
 // `body` is split where the desktop design breaks the line.
@@ -86,4 +89,75 @@ export const MATERIALS = [
   { name: "Stone", label: "Aggregate", share: "55%" },
   { name: "Cement", label: "Cement", share: "15%" },
   { name: "Water", label: "Water", share: "30%" },
+] as const
+
+export const REVIEWS = [
+  {
+    name: "Michael Brown",
+    role: "Owner of Urban Events",
+    body: "Highly recommended, customer service is their core which is no common nowdays. I had to make changes to my order but it was received with politeness, not frustration.",
+  },
+  {
+    name: "Michael Brown",
+    role: "Owner of Urban Events",
+    body: "Highly recommended, customer service is their core which is no common nowdays. I had to make changes to my order but it was received with politeness, not frustration.",
+  },
+  {
+    name: "Michael Brown",
+    role: "Owner of Urban Events",
+    body: "Highly recommended, customer service is their core which is no common nowdays. I had to make changes to my order but it was received with politeness, not frustration.",
+  },
+] as const
+
+export const FAQS = [
+  {
+    question: "What concrete services do you provide?",
+    answer:
+      "We supply ready mix concrete, mix-on-site concrete, liquid and dry screed, and concrete pump services for residential and commercial projects.",
+  },
+  {
+    question: "Do you mix concrete on site?",
+    answer:
+      "Yes. Our volumetric trucks mix concrete fresh on site, so you get exactly the quantity you need and only pay for what you use.",
+  },
+  {
+    question: "Do you supply both dry and liquid screed?",
+    answer:
+      "Yes. We supply traditional dry screed and free-flowing liquid screed, suitable for underfloor heating and large floor areas.",
+  },
+  {
+    question: "Do you provide concrete pump hire?",
+    answer:
+      "Yes. Our concrete pumping service places concrete accurately where trucks can't reach, from back gardens to upper floors.",
+  },
+  {
+    question: "Can you supply concrete for small projects?",
+    answer:
+      "Absolutely. We offer flexible quantities, so we can deliver for anything from a single footing or patio base to a full site pour.",
+  },
+] as const
+
+export const AREAS = ["Local Area", "Nearby Areas", "Surrounding Communities", "Residential Areas"] as const
+
+// Placeholder shots until the gallery photos are added to /public/images.
+export const GALLERY = [
+  { image: asset("/images/s1.svg"), alt: "Ready mix concrete truck" },
+  { image: asset("/images/s2.svg"), alt: "Mix on site truck" },
+  { image: asset("/images/s3.svg"), alt: "Concrete pumping" },
+  { image: asset("/images/s4.svg"), alt: "Supply and delivery" },
+  { image: asset("/images/outcome1.svg"), alt: "Coastal house project" },
+  { image: asset("/images/outcome2.svg"), alt: "Civic structure project" },
+] as const
+
+export const CONTACT = {
+  address: "stonemix.uk",
+  email: "info@stonemix.co.uk",
+  phone: "+44 (0) 123 456 7890",
+  phoneHref: "tel:+441234567890",
+} as const
+
+export const QUICK_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Contact", href: "#contact" },
 ] as const

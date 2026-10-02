@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
+import { Reveal, RevealLines } from "@/components/motion/reveal"
 import { ASSETS, SERVICES } from "@/lib/site"
 
 /*
@@ -27,22 +28,25 @@ export function ServicesSection() {
       />
 
       <div className="flex flex-col px-4 py-16 sm:px-8 lg:relative lg:mx-auto lg:block lg:h-1014 lg:max-w-1440 lg:p-0 lg:*:absolute">
-        <p className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-92 lg:left-105 lg:text-[length:max(12px,calc(var(--u)*14))]">
+        <Reveal as="p" from="left" className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-92 lg:left-105 lg:text-[length:max(12px,calc(var(--u)*14))]">
           02 - Services
-        </p>
+        </Reveal>
 
-        <h2
+        <RevealLines
           id="services-title"
           className="mt-6 text-[10vw] leading-[1.09] font-medium tracking-[-0.06em] uppercase lg:top-132 lg:left-96.5 lg:mt-0 lg:text-[length:calc(var(--u)*100)] lg:whitespace-nowrap"
         >
           <span className="block">One material.</span>
           <span className="block text-[#8694a0]">Four ways to move it.</span>
-        </h2>
+        </RevealLines>
 
         <ul className="mt-10 lg:top-391 lg:left-90.5 lg:mt-0 lg:w-1255.5">
           {SERVICES.map((service, i) => (
-            <li
+            <Reveal
+              as="li"
               key={service.title}
+              from={i % 2 ? "right" : "left"}
+              delay={i * 0.1}
               className="border-b border-white/15 last:border-b-0 lg:h-131.5"
             >
               <Link
@@ -80,7 +84,7 @@ export function ServicesSection() {
                   className="size-6 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 lg:top-58 lg:left-1217.5 lg:size-33"
                 />
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Reveal, RevealLines, RevealText } from "@/components/motion/reveal"
 import { ASSETS, REASONS } from "@/lib/site"
 import { VideoCard } from "./video-card"
 
@@ -26,45 +27,47 @@ export function WhySection() {
           className="pointer-events-none -z-10 hidden -scale-x-100 opacity-5 grayscale lg:top-82 lg:left-601 lg:block lg:h-auto lg:w-1307.5 lg:max-w-none"
         />
 
-        <VideoCard
-          src={ASSETS.chooseVideo}
-          label="Concrete pouring into rebar formwork"
-          className="aspect-[531.5/617] rounded-3xl lg:top-73 lg:left-80 lg:w-531.5 lg:rounded-[calc(var(--u)*28)]"
-        />
+        <Reveal from="left" zoom duration={1.1} className="lg:top-73 lg:left-80 lg:w-531.5">
+          <VideoCard
+            src={ASSETS.chooseVideo}
+            label="Concrete pouring into rebar formwork"
+            className="aspect-[531.5/617] rounded-3xl lg:rounded-[calc(var(--u)*28)]"
+          />
+        </Reveal>
 
         <div className="lg:top-101 lg:left-654.5 lg:w-760">
-          <p className="text-[13px] leading-none tracking-[0.092em] uppercase lg:text-[length:max(12px,calc(var(--u)*14))]">
+          <Reveal as="p" from="right" className="text-[13px] leading-none tracking-[0.092em] uppercase lg:text-[length:max(12px,calc(var(--u)*14))]">
             05 - Why choose Stonemix
-          </p>
+          </Reveal>
 
-          <h2
+          <RevealLines
             id="why-title"
             className="mt-4 text-[12vw] leading-[0.96] font-semibold tracking-[-0.055em] uppercase lg:mt-[calc(var(--u)*8.5)] lg:-ml-6 lg:text-[length:calc(var(--u)*100)] lg:whitespace-nowrap"
           >
             <span className="block">Precision</span>
             <span className="block text-stone">Isn&rsquo;t extra.</span>
             <span className="block">It&rsquo;s standard.</span>
-          </h2>
+          </RevealLines>
 
-          <p className="mt-8 max-w-[44em] text-base leading-[1.65] lg:mt-[calc(var(--u)*32)] lg:-ml-5.5 lg:text-[length:max(14px,calc(var(--u)*18))] lg:leading-[calc(var(--u)*28)]">
+          <RevealText from="right" className="mt-8 max-w-[44em] text-base leading-[1.65] lg:mt-[calc(var(--u)*32)] lg:-ml-5.5 lg:text-[length:max(14px,calc(var(--u)*18))] lg:leading-[calc(var(--u)*28)]">
             We provide quality concrete and screed with flexible quantities,
             practical advice and <br className="hidden lg:inline" />
             dependable service for projects across London.
-          </p>
+          </RevealText>
 
           <ol className="mt-8 flex flex-col gap-3 text-base leading-[1.7] lg:mt-[calc(var(--u)*36)] lg:gap-[calc(var(--u)*11.5)] lg:text-[length:max(14px,calc(var(--u)*18))] lg:leading-[calc(var(--u)*28.4)]">
             {REASONS.map((reason, i) => (
               <li key={reason.title} className="grid grid-cols-[1.45em_1fr]">
-                <span className="font-semibold lg:text-[length:max(15px,calc(var(--u)*20))]">
+                <Reveal as="span" from="right" delay={i * 0.15} className="font-semibold lg:text-[length:max(15px,calc(var(--u)*20))]">
                   {i + 1}.
-                </span>
-                <p>
+                </Reveal>
+                <RevealText from="right" delay={i * 0.15}>
                   <strong className="font-semibold lg:text-[length:max(15px,calc(var(--u)*20))]">
                     {reason.title} :
                   </strong>{" "}
                   {reason.body[0]} <br className="hidden lg:inline" />
                   {reason.body[1]}
-                </p>
+                </RevealText>
               </li>
             ))}
           </ol>

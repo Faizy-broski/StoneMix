@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Reveal, RevealLines } from "@/components/motion/reveal"
 import { ASSETS, OUTCOMES } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { FixedBackdrop } from "./fixed-backdrop"
@@ -23,7 +24,11 @@ function OutcomeCard({
   const bleedsRight = index === 0
 
   return (
-    <figure
+    <Reveal
+      as="figure"
+      from={bleedsRight ? "right" : "left"}
+      distance={160}
+      duration={1.2}
       className={cn(
         "relative isolate flex flex-col justify-end overflow-hidden p-5 text-white lg:block lg:p-0",
         className
@@ -49,7 +54,7 @@ function OutcomeCard({
         Project {String(index + 1).padStart(2, "0")}
       </p>
       {children}
-    </figure>
+    </Reveal>
   )
 }
 
@@ -87,17 +92,18 @@ export function OutcomesSection() {
       </FixedBackdrop>
 
       <div className="flex flex-col gap-10 px-4 py-16 sm:px-8 lg:relative lg:mx-auto lg:block lg:h-2242 lg:max-w-1440 lg:p-0 lg:*:absolute">
-        <p className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-112.5 lg:left-110.5 lg:text-[length:max(12px,calc(var(--u)*14))]">
+        <Reveal as="p" from="left" className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-112.5 lg:left-110.5 lg:text-[length:max(12px,calc(var(--u)*14))]">
           04 - Outcomes
-        </p>
+        </Reveal>
 
-        <h2
+        <RevealLines
           id="outcomes-title"
+          from="right"
           className="text-[12vw] leading-[1.07] font-semibold tracking-[-0.03em] uppercase lg:top-113 lg:right-91 lg:text-right lg:text-[length:calc(var(--u)*96)] lg:whitespace-nowrap"
         >
           <span className="block">What the mix</span>
           <span className="block text-[#8694a0]">becomes.</span>
-        </h2>
+        </RevealLines>
 
         <OutcomeCard
           outcome={coastal}
@@ -128,22 +134,22 @@ export function OutcomesSection() {
         </OutcomeCard>
 
         <div className="lg:top-1503 lg:left-889 lg:w-460">
-          <p className="text-[8px] leading-none tracking-[0.18em] uppercase lg:text-[length:max(7px,calc(var(--u)*7.5))]">
+          <Reveal as="p" from="right" className="text-[8px] leading-none tracking-[0.18em] uppercase lg:text-[length:max(7px,calc(var(--u)*7.5))]">
             Material record / 02
-          </p>
+          </Reveal>
           <blockquote className="mt-4 text-[10vw] leading-[1.032] font-medium tracking-[0.015em] uppercase lg:-ml-1.5 lg:mt-[calc(var(--u)*19.3)] lg:text-[length:calc(var(--u)*68)]">
-            <p>
+            <RevealLines as="p" stagger={0.1}>
               <span className="block">&ldquo;Structure</span>
               <span className="block">begins</span>
               <span className="block">long</span>
               <span className="block">before the</span>
               <span className="block">concrete</span>
               <span className="block">sets.&rdquo;</span>
-            </p>
+            </RevealLines>
           </blockquote>
-          <p className="mt-6 text-base leading-none lg:mt-[calc(var(--u)*41.9)] lg:text-[length:max(14px,calc(var(--u)*20))]">
+          <Reveal as="p" from="right" delay={0.3} className="mt-6 text-base leading-none lg:mt-[calc(var(--u)*41.9)] lg:text-[length:max(14px,calc(var(--u)*20))]">
             Form begins with flow.
-          </p>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Reveal, RevealText } from "@/components/motion/reveal"
 import { ASSETS, MATERIALS } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { FixedBackdrop } from "./fixed-backdrop"
@@ -41,11 +42,11 @@ export function MaterialSection() {
       </FixedBackdrop>
 
       <div className="flex flex-col gap-10 px-4 py-16 sm:px-8 lg:relative lg:mx-auto lg:block lg:h-843 lg:max-w-1440 lg:p-0 lg:*:absolute">
-        <p className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-67.5 lg:left-92 lg:text-[length:max(12px,calc(var(--u)*14))]">
+        <Reveal as="p" from="left" className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-67.5 lg:left-92 lg:text-[length:max(12px,calc(var(--u)*14))]">
           01 - The material
-        </p>
+        </Reveal>
 
-        <div className="relative aspect-[630.4/548] overflow-hidden rounded-[10px] bg-graphite lg:top-127 lg:left-90 lg:w-630.5 lg:rounded-[calc(var(--u)*10)]">
+        <Reveal from="left" zoom duration={1.1} className="relative aspect-[630.4/548] overflow-hidden rounded-[10px] bg-graphite lg:top-127 lg:left-90 lg:w-630.5 lg:rounded-[calc(var(--u)*10)]">
           <video
             aria-label="Wet concrete and aggregate pouring from a mixer chute"
             autoPlay
@@ -60,9 +61,9 @@ export function MaterialSection() {
           </video>
           <Crosshair className="top-[21.5%] left-[21.1%]" />
           <Crosshair className="top-[69.7%] left-[80.9%]" />
-        </div>
+        </Reveal>
 
-        <div className="lg:top-151 lg:left-821 lg:w-489.5">
+        <Reveal from="right" delay={0.15} className="lg:top-151 lg:left-821 lg:w-489.5">
           <p className="text-[8px] leading-none tracking-[0.2em] uppercase lg:text-[length:max(7px,calc(var(--u)*7.5))]">
             Raw material / Macro study
           </p>
@@ -85,28 +86,30 @@ export function MaterialSection() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
-        <h2
+        <Reveal
+          as="h2"
+          from="right"
           id="material-title"
           className="text-[22vw] leading-none font-semibold tracking-[-0.06em] uppercase lg:top-488 lg:left-820 lg:text-[length:calc(var(--u)*123)]"
         >
           The <span className="text-stone">mix.</span>
-        </h2>
+        </Reveal>
 
-        <p className="max-w-md text-base leading-relaxed lg:top-617.5 lg:left-821 lg:w-500 lg:max-w-none lg:text-[length:max(15px,calc(var(--u)*18))] lg:leading-27.5">
+        <RevealText from="right" className="max-w-md text-base leading-relaxed lg:top-617.5 lg:left-821 lg:w-500 lg:max-w-none lg:text-[length:max(15px,calc(var(--u)*18))] lg:leading-27.5">
           Every structure begins with a material decision. We bring control,
           movement and intent to the mix.
-        </p>
+        </RevealText>
 
-        <ol className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-graphite/30 pt-5 text-[11px] leading-none tracking-[0.02em] uppercase lg:top-726 lg:left-89.5 lg:flex lg:w-1232.5 lg:justify-between lg:pt-21 lg:text-[length:max(11px,calc(var(--u)*13))]">
+        <Reveal as="ol" from="up" className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-graphite/30 pt-5 text-[11px] leading-none tracking-[0.02em] uppercase lg:top-726 lg:left-89.5 lg:flex lg:w-1232.5 lg:justify-between lg:pt-21 lg:text-[length:max(11px,calc(var(--u)*13))]">
           {MATERIALS.map((m, i) => (
             <li key={m.name}>
               Material / {String(i + 1).padStart(2, "0")} {m.label}
             </li>
           ))}
           <li className="text-accent-red">The mix / 04</li>
-        </ol>
+        </Reveal>
       </div>
     </section>
   )

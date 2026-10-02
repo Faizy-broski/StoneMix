@@ -1,5 +1,6 @@
 import { ArrowDownRight } from "lucide-react"
 
+import { Reveal, RevealLines } from "@/components/motion/reveal"
 import { MATERIALS, TRUCK_PARTS } from "@/lib/site"
 import { TruckFigure } from "./truck-figure"
 
@@ -24,17 +25,17 @@ export function MaterialLabSection() {
       className="relative isolate overflow-hidden bg-white text-graphite lg:[--spacing:var(--u)]"
     >
       <div className="flex flex-col px-4 py-16 sm:px-8 lg:relative lg:mx-auto lg:block lg:h-1000 lg:max-w-1440 lg:p-0 lg:*:absolute">
-        <p className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-36.75 lg:left-93.5 lg:text-[length:max(12px,calc(var(--u)*14))]">
+        <Reveal as="p" from="left" className="text-[13px] leading-none tracking-[0.092em] uppercase lg:top-36.75 lg:left-93.5 lg:text-[length:max(12px,calc(var(--u)*14))]">
           03 - Material lab
-        </p>
+        </Reveal>
 
-        <h2
+        <RevealLines
           id="material-lab-title"
           className="mt-6 text-[10vw] leading-[1.05] font-semibold tracking-[-0.052em] uppercase lg:top-75.5 lg:left-80 lg:mt-0 lg:text-[length:calc(var(--u)*100)] lg:whitespace-nowrap"
         >
           <span className="block">Concrete,</span>
           <span className="block text-stone">Deconstructed.</span>
-        </h2>
+        </RevealLines>
 
         <svg
           aria-hidden
@@ -61,7 +62,14 @@ export function MaterialLabSection() {
           ))}
         </svg>
 
-        <TruckFigure className="-mx-[12%] mt-6 w-[124%] lg:top-360 lg:left-234.5 lg:mx-0 lg:mt-0 lg:w-1034" />
+        <Reveal
+          from="right"
+          zoom
+          duration={1.2}
+          className="-mx-[12%] mt-6 w-[124%] lg:top-360 lg:left-234.5 lg:mx-0 lg:mt-0 lg:w-1034"
+        >
+          <TruckFigure />
+        </Reveal>
 
         <svg
           aria-hidden
@@ -93,23 +101,31 @@ export function MaterialLabSection() {
               className="border-t border-graphite/20 pt-3 lg:contents"
               style={{ "--x": part.label[0], "--y": part.label[1] } as React.CSSProperties}
             >
-              <span className="block text-[9px] leading-none tracking-[0.06em] text-graphite/50 lg:absolute lg:top-[calc(var(--u)*var(--y))] lg:left-[calc(var(--u)*var(--x))] lg:text-[length:calc(var(--u)*9)]">
+              <Reveal
+                as="span"
+                from={part.label[0] < 720 ? "left" : "right"}
+                delay={0.3 + i * 0.1}
+                className="block text-[9px] leading-none tracking-[0.06em] text-graphite/50 lg:absolute lg:top-[calc(var(--u)*var(--y))] lg:left-[calc(var(--u)*var(--x))] lg:text-[length:calc(var(--u)*9)]">
                 / {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="mt-2 block text-lg leading-none font-semibold tracking-[0.035em] whitespace-nowrap text-graphite/70 uppercase lg:absolute lg:top-[calc(var(--u)*(var(--y)+21.4))] lg:left-[calc(var(--u)*(var(--x)-1.5))] lg:mt-0 lg:text-[length:calc(var(--u)*29)]">
+              </Reveal>
+              <Reveal
+                as="span"
+                from={part.label[0] < 720 ? "left" : "right"}
+                delay={0.35 + i * 0.1}
+                className="mt-2 block text-lg leading-none font-semibold tracking-[0.035em] whitespace-nowrap text-graphite/70 uppercase lg:absolute lg:top-[calc(var(--u)*(var(--y)+21.4))] lg:left-[calc(var(--u)*(var(--x)-1.5))] lg:mt-0 lg:text-[length:calc(var(--u)*29)]">
                 {part.name}
-              </span>
+              </Reveal>
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 flex items-start justify-between gap-6 border-t border-graphite/12 pt-4 text-[8px] leading-none tracking-[0.07em] uppercase lg:top-929.5 lg:left-105.25 lg:mt-0 lg:w-1229.5 lg:px-3.5 lg:pt-14.75 lg:text-[length:max(7px,calc(var(--u)*7.5))]">
+        <Reveal from="up" className="mt-10 flex items-start justify-between gap-6 border-t border-graphite/12 pt-4 text-[8px] leading-none tracking-[0.07em] uppercase lg:top-929.5 lg:left-105.25 lg:mt-0 lg:w-1229.5 lg:px-3.5 lg:pt-14.75 lg:text-[length:max(7px,calc(var(--u)*7.5))]">
           <p>{[...MATERIALS.map((m) => m.label), "Mix", "Final concrete"].join(" / ")}</p>
           <p className="flex shrink-0 items-center gap-[2.15em]">
             Scroll to converge
             <ArrowDownRight aria-hidden strokeWidth={2} className="-my-[0.35em] -mr-[0.5em] size-[1.7em]" />
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
