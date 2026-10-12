@@ -8,7 +8,7 @@ import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "./social-
 
 const SOCIALS = [
   { label: "Twitter", href: "#", Icon: TwitterIcon },
-  { label: "Facebook", href: "#", Icon: FacebookIcon },
+  { label: "Facebook", href: "https://www.facebook.com/stonemix14", Icon: FacebookIcon },
   { label: "Instagram", href: "#", Icon: InstagramIcon },
   { label: "YouTube", href: "#", Icon: YoutubeIcon },
 ]

@@ -151,9 +151,10 @@ export const GALLERY = [
 
 export const CONTACT = {
   address: "stonemix.uk",
-  email: "info@stonemix.co.uk",
-  phone: "+44 (0) 123 456 7890",
-  phoneHref: "tel:+441234567890",
+  email: "Stonemix2021@gmail.com",
+  phone: "+447865395111",
+  phoneHref: "tel:+447865395111", 
+  // "tel:+447865396111"
 } as const
 
 export const QUICK_LINKS = [
